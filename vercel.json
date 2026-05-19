@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/cao-mais-calmo-14-dias.html" }
+  ]
+}
