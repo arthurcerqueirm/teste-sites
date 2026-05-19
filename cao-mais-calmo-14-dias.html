@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cão Mais Calmo em 14 Dias — Método Para Pais de Pet</title>
+  <meta name="description" content="O método caseiro que reabilita a agressividade do seu cachorro sem adestrador particular, sem medicação e sem precisar entregar seu melhor amigo.">
+
+  <!-- ================================================
+       INSERIR PIXEL META E GOOGLE TAG AQUI
+       Exemplo Meta Pixel:
+       <script>!function(f,b,e,v,n,t,s){...}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','SEU_PIXEL_ID');fbq('track','PageView');</script>
+       Exemplo Google Tag Manager:
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  ================================================ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       RESET & VARIÁVEIS
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bege-claro:         #F8F2EA;
+      --bege-medio:         #EDE0D0;
+      --bege-escuro:        #DDD0BD;
+      --marrom-claro:       #A67C52;
+      --marrom-medio:       #7A5C3A;
+      --marrom-escuro:      #3A2814;
+      --verde:              #6B8F6B;
+      --verde-claro:        #8FAF8F;
+      --verde-escuro:       #4A6B4A;
+      --verde-profundo:     #2E4A2E;
+      --ambar:              #C8810A;
+      --ambar-claro:        #E09B20;
+      --ambar-escuro:       #9E650A;
+      --texto-escuro:       #2C1F0E;
+      --texto-medio:        #5C4A30;
+      --texto-claro:        #9C8870;
+      --branco:             #FFFFFF;
+      --sombra-s:           0 2px 16px rgba(44,31,14,.07);
+      --sombra-m:           0 4px 32px rgba(44,31,14,.13);
+      --r:                  12px;
+      --r-g:                24px;
+      --ff-t:               'Lora', Georgia, serif;
+      --ff-b:               'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--ff-b);
+      background: var(--bege-claro);
+      color: var(--texto-escuro);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ============================================
+       LAYOUT HELPERS
+    ============================================ */
+    .wrap {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    .center { text-align: center; }
+
+    /* ============================================
+       FADE-IN (IntersectionObserver)
+    ============================================ */
+    .fi {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .fi.on { opacity: 1; transform: none; }
+    .fi.d1 { transition-delay: .10s; }
+    .fi.d2 { transition-delay: .20s; }
+    .fi.d3 { transition-delay: .30s; }
+    .fi.d4 { transition-delay: .40s; }
+
+    /* ============================================
+       BOTÃO CTA
+    ============================================ */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #C8810A 0%, #E09B20 100%);
+      color: #fff;
+      font-family: var(--ff-b);
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 4px 22px rgba(200,129,10,.38), 0 2px 8px rgba(200,129,10,.22);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .cta:hover  { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,129,10,.46); }
+    .cta:active { transform: translateY(0);    box-shadow: 0 2px 10px rgba(200,129,10,.3); }
+
+    .microcopy {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+      margin-top: 10px;
+      font-size: .73rem;
+      color: var(--texto-claro);
+    }
+    .microcopy span { display: flex; align-items: center; gap: 4px; }
+    .microcopy svg  { width: 11px; height: 11px; }
+
+    /* ============================================
+       STICKY CTA — MOBILE
+    ============================================ */
+    #sticky {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 10px 18px 18px;
+      background: linear-gradient(to top, var(--bege-claro) 65%, transparent);
+      transform: translateY(110%);
+      transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+      pointer-events: none;
+    }
+    #sticky.on { transform: translateY(0); pointer-events: all; }
+    #sticky .cta { font-size: .85rem; padding: 15px 24px; max-width: 100%; }
+
+    @media (min-width: 768px) { #sticky { display: none; } }
+
+    /* ============================================
+       SECTION HEADINGS
+    ============================================ */
+    .s-title {
+      font-family: var(--ff-t);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.22;
+      color: var(--marrom-escuro);
+      letter-spacing: -.01em;
+      margin-bottom: 28px;
+    }
+    .s-title em { font-style: italic; color: var(--verde-escuro); }
+
+    .bar {
+      width: 44px; height: 3px;
+      background: linear-gradient(90deg, var(--verde) 0%, var(--ambar) 100%);
+      border-radius: 2px;
+      margin: 0 auto 28px;
+    }
+
+    /* ============================================
+       SEÇÃO 1 — HERO
+    ============================================ */
+    .hero {
+      background: linear-gradient(155deg, #F8F2EA 0%, #EDE0D0 55%, #E4D5BE 100%);
+      padding: 52px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(107,143,107,.09) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--verde-escuro);
+      border: 1px solid var(--verde);
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--ff-t);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--marrom-escuro);
+      letter-spacing: -.02em;
+      margin-bottom: 18px;
+    }
+    .hero h1 span { color: var(--verde-escuro); }
+
+    .hero-sub {
+      font-size: 1.02rem;
+      line-height: 1.68;
+      color: var(--texto-medio);
+      margin-bottom: 32px;
+    }
+
+    .stars-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      font-size: .8rem;
+      color: var(--texto-claro);
+    }
+    .stars { color: var(--ambar); font-size: 1rem; letter-spacing: 2px; }
+
+    /* ------- MOCKUP DO HERO ------- */
+    .mockup-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      height: 290px;
+      margin: 52px auto 0;
+    }
+
+    /* Glow de fundo */
+    .mockup-glow {
+      position: absolute;
+      inset: -30px;
+      background: radial-gradient(ellipse at center, rgba(107,143,107,.13) 0%, transparent 68%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* EBOOK */
+    /* SUBSTITUIR: trocar o elemento .mockup-ebook por uma tag <img> com a capa real do ebook */
+    .mockup-ebook {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -52%) rotate(-4deg) perspective(500px) rotateY(10deg);
+      width: 148px; height: 208px;
+      background: linear-gradient(155deg, #4A6B4A 0%, #2A3E2A 100%);
+      border-radius: 3px 14px 14px 3px;
+      box-shadow:
+        -5px 0 0 rgba(0,0,0,.18),
+        10px 10px 28px rgba(0,0,0,.28),
+        18px 18px 44px rgba(0,0,0,.10);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 12px 14px;
+      overflow: hidden;
+    }
+    .mockup-ebook::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 7px;
+      background: rgba(0,0,0,.22);
+    }
+    .mockup-ebook::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 28px; height: 28px;
+      background: rgba(255,255,255,.07);
+      border-radius: 0 14px 0 100%;
+    }
+
+    .ebook-badge-seal {
+      position: absolute;
+      top: -9px; right: -9px;
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, var(--ambar) 0%, var(--ambar-claro) 100%);
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-size: .42rem; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: #fff; text-align: center; line-height: 1.3;
+      box-shadow: 0 3px 14px rgba(200,129,10,.45);
+      z-index: 20;
+    }
+
+    .ebook-title-text {
+      font-family: var(--ff-t);
+      font-size: .64rem; font-weight: 700;
+      color: rgba(255,255,255,.95);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      line-height: 1.35;
+      z-index: 1;
+      margin-bottom: 6px;
+    }
+
+    /* SVG silhueta do cachorro — SUBSTITUIR por imagem real */
+    .dog-svg {
+      width: 78px; height: 78px;
+      opacity: .78;
+      z-index: 1;
+      margin: 4px 0;
+    }
+
+    .ebook-sub-text {
+      font-size: .4rem; color: rgba(255,255,255,.5);
+      text-transform: uppercase; letter-spacing: .12em;
+      text-align: center; z-index: 1;
+    }
+
+    /* CELULAR */
+    /* SUBSTITUIR: trocar .mockup-phone por <img> com screenshot real do vídeo */
+    .mockup-phone {
+      position: absolute;
+      right: 4px; top: 8px;
+      width: 96px; height: 164px;
+      background: #181818;
+      border-radius: 18px;
+      border: 2px solid #282828;
+      box-shadow: 6px 6px 22px rgba(0,0,0,.32), 0 2px 8px rgba(0,0,0,.2);
+      z-index: 8;
+      transform: rotate(5deg);
+      overflow: hidden;
+    }
+    .mockup-phone::before {
+      content: '';
+      position: absolute;
+      top: 7px; left: 50%;
+      transform: translateX(-50%);
+      width: 28px; height: 4px;
+      background: #333; border-radius: 2px;
+    }
+    .phone-screen {
+      position: absolute; inset: 4px;
+      background: linear-gradient(155deg, #1a3a2a 0%, #0c2218 100%);
+      border-radius: 14px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 6px;
+    }
+    .play-btn {
+      width: 30px; height: 30px;
+      background: rgba(255,255,255,.88);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-btn::after {
+      content: '';
+      border-left: 9px solid #1a3a2a;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      margin-left: 3px;
+    }
+    .phone-lbl {
+      font-size: .38rem;
+      color: rgba(255,255,255,.55);
+      text-align: center; letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* DIÁRIO */
+    /* SUBSTITUIR: trocar .mockup-diary por <img> com capa real do diário */
+    .mockup-diary {
+      position: absolute;
+      left: -8px; bottom: 2px;
+      width: 124px; height: 94px;
+      background: #F5EFE7;
+      border: 1px solid var(--bege-escuro);
+      border-radius: 8px;
+      box-shadow: 4px 4px 16px rgba(0,0,0,.14);
+      z-index: 5;
+      transform: rotate(3.5deg);
+      padding: 10px;
+    }
+    .diary-hdr {
+      font-size: .48rem; font-weight: 700;
+      color: var(--verde-escuro);
+      text-transform: uppercase; letter-spacing: .1em;
+      margin-bottom: 7px;
+      font-family: var(--ff-b);
+    }
+    .dl { height: 2px; background: var(--bege-escuro); border-radius: 1px; margin-bottom: 6px; }
+
+    /* ------- DESKTOP HERO GRID ------- */
+    @media (min-width: 768px) {
+      .wrap { max-width: 1100px; }
+
+      .hero { padding: 88px 0 108px; }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+
+      .hero h1 { font-size: 3.2rem; }
+
+      .mockup-wrap {
+        margin: 0;
+        max-width: none;
+        height: 380px;
+      }
+      .mockup-ebook { width: 186px; height: 262px; }
+      .mockup-phone { width: 126px; height: 216px; right: 24px; }
+      .mockup-diary { width: 158px; height: 118px; }
+    }
+
+    /* ============================================
+       SEÇÃO 2 — DOR
+    ============================================ */
+    .s-pain {
+      background: var(--branco);
+      padding: 68px 0;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex; flex-direction: column;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .pain-list li {
+      display: flex; align-items: flex-start;
+      gap: 14px;
+      font-size: .97rem;
+      color: var(--texto-medio);
+      line-height: 1.55;
+    }
+    .p-ico {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      margin-top: 1px;
+    }
+    .p-ico svg { width: 22px; height: 22px; }
+
+    .pain-quote {
+      font-family: var(--ff-t);
+      font-style: italic;
+      font-size: 1.04rem;
+      color: var(--marrom-medio);
+      padding: 18px 20px;
+      border-left: 3px solid var(--verde);
+      background: var(--bege-claro);
+      border-radius: 0 var(--r) var(--r) 0;
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       SEÇÃO 3 — POR QUE ACONTECE
+    ============================================ */
+    .s-why {
+      background: linear-gradient(155deg, #EDE8DF 0%, #E2D2BB 100%);
+      padding: 68px 0;
+    }
+    .s-why p {
+      font-size: .98rem;
+      color: var(--texto-medio);
+      line-height: 1.75;
+    }
+
+    /* ============================================
+       SEÇÃO 4 — MÉTODO
+    ============================================ */
+    .s-method {
+      background: var(--branco);
+      padding: 68px 0;
+    }
+    .method-sub {
+      font-size: .93rem;
+      color: var(--texto-claro);
+      margin-top: -18px;
+      margin-bottom: 36px;
+      font-style: italic;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 768px) { .pillars { grid-template-columns: 1fr 1fr; } }
+
+    .pillar {
+      background: var(--bege-claro);
+      border: 1px solid var(--bege-escuro);
+      border-radius: var(--r);
+      padding: 22px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: box-shadow .2s;
+    }
+    .pillar:hover { box-shadow: var(--sombra-s); }
+
+    .p-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .p-num  { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--verde-escuro); margin-bottom: 3px; }
+    .p-name { font-family: var(--ff-t); font-size: 1.02rem; font-weight: 600; color: var(--marrom-escuro); margin-bottom: 5px; }
+    .p-desc { font-size: .86rem; color: var(--texto-claro); line-height: 1.55; }
+
+    /* ============================================
+       SEÇÃO 5 — O QUE VOCÊ RECEBE
+    ============================================ */
+    .s-product {
+      background: linear-gradient(155deg, var(--verde-escuro) 0%, var(--verde-profundo) 100%);
+      padding: 68px 0;
+    }
+    .s-product .s-title { color: #fff; }
+
+    .prod-list {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .prod-item {
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: var(--r);
+      padding: 16px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .prod-ico {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,.11);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prod-ico svg { width: 20px; height: 20px; stroke: rgba(255,255,255,.9); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .prod-info { flex: 1; }
+    .prod-name { font-size: .9rem; font-weight: 600; color: rgba(255,255,255,.95); margin-bottom: 2px; }
+    .prod-desc { font-size: .76rem; color: rgba(255,255,255,.55); }
+    .prod-tag  { font-size: .68rem; font-weight: 700; color: var(--ambar-claro); text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; }
+
+    /* ============================================
+       SEÇÃO 6 — DEPOIMENTOS WHATSAPP
+    ============================================ */
+    .s-depo {
+      background: var(--bege-claro);
+      padding: 68px 0;
+      overflow: hidden;
+    }
+    .s-depo .wrap { margin-bottom: 32px; }
+
+    .depo-sub {
+      font-size: .88rem;
+      color: var(--texto-claro);
+      margin-top: -20px;
+      margin-bottom: 4px;
+    }
+
+    /* --- Carrossel Infinito --- */
+    .carousel {
+      overflow: hidden;
+      position: relative;
+      padding: 16px 0 20px;
+      cursor: grab;
+    }
+    .carousel:active { cursor: grabbing; }
+
+    .c-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      animation: scroll-l 60s linear infinite;
+      will-change: transform;
+    }
+    .c-track:hover { animation-play-state: paused; }
+
+    @keyframes scroll-l {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* --- Card WhatsApp --- */
+    .wa {
+      width: 330px;
+      aspect-ratio: 16/9;
+      background: #ECE5DD;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: var(--sombra-m);
+      display: flex; flex-direction: column;
+      flex-shrink: 0;
+      font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+      font-size: 10px;
+      position: relative;
+    }
+    @media (min-width: 768px) { .wa { width: 480px; } }
+
+    /* Header WA */
+    .wa-h {
+      background: #075E54;
+      padding: 7px 10px;
+      display: flex; align-items: center; gap: 8px;
+      flex-shrink: 0;
+    }
+    .wa-back { color: rgba(255,255,255,.78); font-size: 13px; line-height: 1; }
+    .wa-av {
+      width: 29px; height: 29px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .wa-ci { flex: 1; min-width: 0; }
+    .wa-name { font-size: 10.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.25; }
+    .wa-status { font-size: 8.5px; color: rgba(255,255,255,.62); }
+    .wa-ics { display: flex; gap: 11px; color: rgba(255,255,255,.72); font-size: 12px; }
+
+    /* Body WA */
+    .wa-b {
+      flex: 1; padding: 7px 9px;
+      overflow: hidden;
+      display: flex; flex-direction: column; gap: 5px;
+      position: relative;
+    }
+    .wa-b::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,.035) 1px, transparent 0);
+      background-size: 15px 15px;
+      pointer-events: none;
+    }
+
+    /* Balões */
+    .bub {
+      position: relative;
+      max-width: 80%;
+      padding: 5px 8px 14px;
+      border-radius: 8px;
+      font-size: 9.5px; line-height: 1.42;
+      color: #111; z-index: 1;
+    }
+    .bub.s { background: #DCF8C6; align-self: flex-end; border-top-right-radius: 2px; }
+    .bub.s::after { content: ''; position: absolute; top: 0; right: -6px; border-left: 6px solid #DCF8C6; border-top: 6px solid transparent; }
+    .bub.r { background: #fff; align-self: flex-start; border-top-left-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,.1); }
+    .bub.r::after { content: ''; position: absolute; top: 0; left: -6px; border-right: 6px solid #fff; border-top: 6px solid transparent; }
+
+    /* Variante de balão de grupo (cor diferente) */
+    .bub.rg { background: #FFF9C4; }
+    .bub.rg::after { border-right-color: #FFF9C4; }
+
+    .t {
+      position: absolute; bottom: 3px; right: 6px;
+      font-size: 7.5px; color: rgba(0,0,0,.38);
+      display: flex; align-items: center; gap: 2px;
+    }
+    .chk { color: #4FC3F7; font-size: 7.5px; }
+
+    .react {
+      font-size: 8.5px;
+      position: absolute; bottom: -7px; right: 4px;
+      background: #fff; border-radius: 8px;
+      padding: 1px 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.15);
+      z-index: 2;
+    }
+
+    /* Áudio */
+    .aud-bub {
+      display: flex; align-items: center; gap: 6px;
+      padding-right: 44px;
+    }
+    .aud-play {
+      width: 21px; height: 21px;
+      background: #075E54; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .aud-play::after { content: ''; border-left: 7px solid #fff; border-top: 4px solid transparent; border-bottom: 4px solid transparent; margin-left: 2px; }
+    .wvf { flex: 1; height: 18px; display: flex; align-items: center; gap: 1.5px; }
+    .wvf span { background: rgba(7,94,84,.38); border-radius: 1px; width: 2px; }
+    .aud-dur { font-size: 8px; color: rgba(0,0,0,.38); white-space: nowrap; }
+
+    /* Rótulo de grupo */
+    .grp-lbl {
+      font-size: 7.5px; text-align: center;
+      color: rgba(0,0,0,.38);
+      background: rgba(255,255,255,.48);
+      padding: 2px 8px; border-radius: 6px;
+      align-self: center; z-index: 1;
+    }
+
+    /* Vídeo placeholder dentro de balão */
+    .vid-ph {
+      background: rgba(0,0,0,.08);
+      border-radius: 6px;
+      height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8.5px; color: rgba(0,0,0,.38);
+      margin-bottom: 3px;
+      /* SUBSTITUIR: trocar por <img> com o thumbnail do vídeo real */
+    }
+
+    .disclaimer {
+      font-size: .7rem;
+      color: var(--texto-claro);
+      text-align: center;
+      font-style: italic;
+      padding: 16px 22px 0;
+    }
+
+    /* ============================================
+       SEÇÃO 7 — GARANTIA
+    ============================================ */
+    .s-guarantee { background: var(--branco); padding: 68px 0; }
+
+    .g-box {
+      background: linear-gradient(135deg, var(--bege-claro) 0%, #EDE8DF 100%);
+      border: 2px solid var(--bege-escuro);
+      border-radius: var(--r-g);
+      padding: 40px 28px;
+      text-align: center;
+    }
+
+    .g-shield {
+      width: 82px; height: 82px;
+      background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde) 100%);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 22px rgba(74,107,74,.26);
+    }
+    .g-shield svg { width: 40px; height: 40px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .g-days {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde));
+      color: #fff;
+      font-family: var(--ff-t);
+      font-size: 2rem; font-weight: 700;
+      padding: 4px 22px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    .g-title { font-family: var(--ff-t); font-size: 1.45rem; font-weight: 700; color: var(--marrom-escuro); margin-bottom: 14px; }
+
+    .g-text { font-size: .94rem; color: var(--texto-medio); line-height: 1.7; }
+
+    /* ============================================
+       SEÇÃO 8 — PREÇO
+    ============================================ */
+    .s-price {
+      background: linear-gradient(155deg, var(--marrom-escuro) 0%, #2A1C0A 100%);
+      padding: 68px 0;
+    }
+    .s-price .s-title { color: #fff; }
+
+    .val-list {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .val-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 11px 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--r);
+    }
+    .val-name  { font-size: .87rem; color: rgba(255,255,255,.8); }
+    .val-price { font-size: .8rem; color: rgba(255,255,255,.38); text-decoration: line-through; }
+
+    .val-total {
+      display: flex; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,.14);
+      padding: 14px 16px 0;
+      font-size: .88rem;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 28px;
+    }
+    .val-total strong { color: rgba(255,255,255,.9); }
+
+    .price-box {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(200,129,10,.3);
+      border-radius: var(--r-g);
+      padding: 36px 28px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .price-was   { font-size: .95rem; color: rgba(255,255,255,.38); text-decoration: line-through; margin-bottom: 4px; }
+    .price-lbl   { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ambar-claro); margin-bottom: 10px; }
+    .price-main  { font-family: var(--ff-t); font-size: 3.6rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 8px; }
+    .price-main small { font-size: 1.4rem; vertical-align: super; margin-right: 4px; }
+    .price-inst  { font-size: .83rem; color: rgba(255,255,255,.46); margin-bottom: 28px; }
+
+    .microcopy-dark { color: rgba(255,255,255,.36); margin-top: 14px; }
+
+    /* ============================================
+       SEÇÃO 9 — FAQ
+    ============================================ */
+    .s-faq { background: var(--branco); padding: 68px 0; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .faq-item {
+      border: 1px solid var(--bege-escuro);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%; text-align: left;
+      background: var(--bege-claro);
+      border: none; cursor: pointer;
+      padding: 17px 20px;
+      font-family: var(--ff-b);
+      font-size: .91rem; font-weight: 600;
+      color: var(--marrom-escuro);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+      transition: background .18s;
+    }
+    .faq-q:hover, .faq-q[aria-expanded="true"] { background: var(--bege-medio); }
+
+    .chev { flex-shrink: 0; width: 20px; height: 20px; transition: transform .3s ease; }
+    .faq-q[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      transition: max-height .35s ease, padding .35s ease;
+    }
+    .faq-a.open { max-height: 320px; padding: 16px 20px; }
+    .faq-a p { font-size: .88rem; color: var(--texto-medio); line-height: 1.68; }
+
+    /* ============================================
+       SEÇÃO 10 — PS FINAL
+    ============================================ */
+    .s-ps { background: var(--bege-claro); padding: 68px 0; text-align: center; }
+
+    .ps-card {
+      background: var(--branco);
+      border-radius: var(--r-g);
+      padding: 44px 28px;
+      box-shadow: var(--sombra-s);
+      border-top: 4px solid var(--ambar);
+    }
+    .ps-label { font-size: .68rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--ambar); margin-bottom: 18px; }
+    .ps-text  { font-family: var(--ff-t); font-style: italic; font-size: 1.07rem; line-height: 1.72; color: var(--texto-medio); margin-bottom: 32px; }
+
+    /* ============================================
+       RODAPÉ
+    ============================================ */
+    footer { background: var(--marrom-escuro); padding: 40px 0 28px; }
+
+    .foot-top {
+      display: flex; flex-direction: column; gap: 18px;
+      align-items: center; text-align: center;
+      margin-bottom: 24px;
+    }
+    @media (min-width: 768px) { .foot-top { flex-direction: row; justify-content: space-between; text-align: left; } }
+
+    .foot-links { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; }
+    .foot-links a { font-size: .74rem; color: rgba(255,255,255,.38); text-decoration: none; }
+    .foot-links a:hover { color: rgba(255,255,255,.7); }
+    .foot-cnpj { font-size: .7rem; color: rgba(255,255,255,.3); line-height: 1.6; }
+    .foot-disc { font-size: .68rem; color: rgba(255,255,255,.28); line-height: 1.58; font-style: italic; text-align: center; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<!-- ================================================
+     STICKY CTA MOBILE — aparece após 30% de scroll
+================================================ -->
+<div id="sticky">
+  <a href="URL_DO_CHECKOUT_AQUI" class="cta" onclick="cta('sticky')">
+    QUERO ACESSAR AGORA — R$ 47
+  </a>
+</div>
+
+
+<!-- ================================================
+     SEÇÃO 1 — HERO
+================================================ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <!-- Texto -->
+      <div class="fi">
+        <span class="hero-badge">Método para pais de pet</span>
+
+        <h1>Cão Mais Calmo<br><span>em 14 Dias</span></h1>
+
+        <p class="hero-sub">
+          O método caseiro que reabilita a agressividade do seu cachorro sem adestrador particular, sem medicação e sem precisar entregar seu melhor amigo.
+        </p>
+
+        <a href="URL_DO_CHECKOUT_AQUI" class="cta" onclick="cta('hero')">
+          QUERO REABILITAR MEU CÃO
+        </a>
+
+        <div class="microcopy">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Acesso imediato
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Garantia de 7 dias
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Pagamento único
+          </span>
+        </div>
+
+        <div class="stars-row">
+          <span class="stars">★★★★★</span>
+          <span>Mais de 4.200 pais de pet aplicando o método</span>
+        </div>
+      </div>
+
+      <!-- MOCKUP VISUAL -->
+      <!-- SUBSTITUIR: cada elemento .mockup-* por uma <img> com a arte real quando disponível -->
+      <div class="mockup-wrap fi d2">
+        <div class="mockup-glow"></div>
+
+        <!-- Diário de progresso (atrás) -->
+        <div class="mockup-diary">
+          <div class="diary-hdr">Diário · Dia 1</div>
+          <div class="dl"></div>
+          <div class="dl" style="width:86%"></div>
+          <div class="dl" style="width:70%"></div>
+          <div class="dl" style="width:92%"></div>
+          <div class="dl" style="width:62%"></div>
+        </div>
+
+        <!-- Ebook principal (centro) -->
+        <div class="mockup-ebook">
+          <span class="ebook-badge-seal">ACESSO<br>IMEDIATO</span>
+          <span class="ebook-title-text">CÃO MAIS<br>CALMO EM<br>14 DIAS</span>
+
+          <!-- Silhueta SVG do cachorro — SUBSTITUIR por <img> com a imagem real da capa -->
+          <svg class="dog-svg" viewBox="0 0 100 100" fill="rgba(255,255,255,.22)" aria-hidden="true">
+            <ellipse cx="50" cy="73" rx="22" ry="17"/>
+            <circle cx="50" cy="39" r="17"/>
+            <ellipse cx="34.5" cy="29" rx="6.5" ry="10" transform="rotate(-18 34.5 29)"/>
+            <ellipse cx="65.5" cy="29" rx="6.5" ry="10" transform="rotate(18 65.5 29)"/>
+            <ellipse cx="37" cy="78" rx="7" ry="11" transform="rotate(8 37 78)"/>
+            <ellipse cx="63" cy="78" rx="7" ry="11" transform="rotate(-8 63 78)"/>
+            <ellipse cx="61" cy="52" rx="5" ry="11" transform="rotate(-28 61 52)"/>
+          </svg>
+
+          <span class="ebook-sub-text">MÉTODO PARA PAIS DE PET</span>
+        </div>
+
+        <!-- Celular com vídeo (direita) -->
+        <div class="mockup-phone">
+          <div class="phone-screen">
+            <div class="play-btn"></div>
+            <span class="phone-lbl">CURSO<br>DE VÍDEOS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 2 — IDENTIFICAÇÃO DA DOR
+================================================ -->
+<section class="s-pain">
+  <div class="wrap">
+    <h2 class="s-title fi">Se você chegou até aqui, provavelmente já passou por isso:</h2>
+
+    <ul class="pain-list">
+      <li class="fi d1">
+        <span class="p-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A67C52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </span>
+        Seu cão rosnou ou mordeu alguém da sua família
+      </li>
+      <li class="fi d1">
+        <span class="p-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A67C52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        Visitas pararam de ir na sua casa
+      </li>
+      <li class="fi d2">
+        <span class="p-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A67C52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </span>
+        Seu parceiro ou parceira deu um ultimato
+      </li>
+      <li class="fi d2">
+        <span class="p-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A67C52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        Vizinho ou condomínio já reclamou
+      </li>
+      <li class="fi d3">
+        <span class="p-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A67C52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </span>
+        Você gastou em adestrador, ração especial, coleira e nada funcionou
+      </li>
+      <li class="fi d3">
+        <span class="p-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#A67C52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M9 9h.01M15 9h.01"/></svg>
+        </span>
+        À noite você se pergunta: "será que vou ter que entregar ele?"
+      </li>
+    </ul>
+
+    <blockquote class="pain-quote fi">
+      "Eu sei o quanto dói pensar nisso. E sei também que existe um caminho que ninguém te mostrou."
+    </blockquote>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 3 — POR QUE ISSO ACONTECE
+================================================ -->
+<section class="s-why">
+  <div class="wrap">
+    <h2 class="s-title fi">A agressividade do seu cão <em>não é culpa sua</em> — mas a solução está nas suas mãos</h2>
+    <p class="fi d1">
+      Cachorros agressivos não nascem agressivos. Eles aprendem a reagir assim por uma combinação de medo, falta de estrutura, gatilhos não identificados e — principalmente — por terem sido tratados com métodos que pioram o problema. A boa notícia: existe um protocolo claro, testado e replicável que reverte esse comportamento dentro de casa, sem coleira de enforcamento, sem grito, sem castigo.
+    </p>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 4 — O MÉTODO DOS 14 DIAS
+================================================ -->
+<section class="s-method">
+  <div class="wrap">
+    <div class="bar fi"></div>
+    <h2 class="s-title center fi">O Método dos 14 Dias</h2>
+    <p class="method-sub center fi">Um passo por dia. Sem mistério. Sem teoria que não funciona na prática.</p>
+
+    <div class="pillars">
+      <div class="pillar fi d1">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div>
+          <div class="p-num">Pilar 1</div>
+          <div class="p-name">Diagnóstico</div>
+          <div class="p-desc">Identifique qual dos 7 tipos de agressividade seu cão tem — e por que isso muda tudo no tratamento.</div>
+        </div>
+      </div>
+
+      <div class="pillar fi d2">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="p-num">Pilar 2</div>
+          <div class="p-name">Segurança Imediata</div>
+          <div class="p-desc">Pare os episódios hoje com o protocolo de manejo de ambiente. Resultado perceptível nas primeiras 24h.</div>
+        </div>
+      </div>
+
+      <div class="pillar fi d3">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div>
+          <div class="p-num">Pilar 3</div>
+          <div class="p-name">Reabilitação Progressiva</div>
+          <div class="p-desc">Exercícios de dessensibilização dia a dia, no ritmo do seu cão, dentro da sua rotina real.</div>
+        </div>
+      </div>
+
+      <div class="pillar fi d4">
+        <div class="p-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <div class="p-num">Pilar 4</div>
+          <div class="p-name">Manutenção</div>
+          <div class="p-desc">Como manter os resultados e prevenir recaídas pra vida toda — sem depender de mais ninguém.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 5 — O QUE VOCÊ VAI RECEBER
+================================================ -->
+<section class="s-product">
+  <div class="wrap">
+    <div class="bar fi" style="background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.1))"></div>
+    <h2 class="s-title center fi">Tudo isso vai pra sua mão no minuto seguinte à compra</h2>
+
+    <div class="prod-list">
+      <div class="prod-item fi d1">
+        <div class="prod-ico">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Ebook Completo — Cão Mais Calmo em 14 Dias</div>
+          <div class="prod-desc">Guia completo com o método passo a passo</div>
+        </div>
+        <div class="prod-tag">INCLUSO</div>
+      </div>
+
+      <div class="prod-item fi d2">
+        <div class="prod-ico">
+          <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">12 Vídeos de Exercícios</div>
+          <div class="prod-desc">Aulas curtas para aplicar em casa, sem equipamento</div>
+        </div>
+        <div class="prod-tag">INCLUSO</div>
+      </div>
+
+      <div class="prod-item fi d3">
+        <div class="prod-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Diário de Progresso Imprimível</div>
+          <div class="prod-desc">14 páginas para acompanhar cada dia do método</div>
+        </div>
+        <div class="prod-tag">INCLUSO</div>
+      </div>
+
+      <div class="prod-item fi d3">
+        <div class="prod-ico">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Checklist do Plano de Segurança Imediato</div>
+          <div class="prod-desc">O que fazer nas primeiras 24 horas</div>
+        </div>
+        <div class="prod-tag">INCLUSO</div>
+      </div>
+
+      <div class="prod-item fi d4">
+        <div class="prod-ico">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Roteiro de Conversa com o Veterinário</div>
+          <div class="prod-desc">Como apresentar o progresso ao seu vet e pedir o suporte certo</div>
+        </div>
+        <div class="prod-tag">INCLUSO</div>
+      </div>
+    </div>
+
+    <div class="center fi">
+      <a href="URL_DO_CHECKOUT_AQUI" class="cta" style="max-width:100%" onclick="cta('product')">
+        QUERO ACESSAR AGORA POR R$ 47
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 6 — DEPOIMENTOS WHATSAPP (CARROSSEL INFINITO)
+================================================ -->
+<section class="s-depo">
+  <div class="wrap">
+    <div class="bar fi"></div>
+    <h2 class="s-title fi">O que pais e mães de pet estão dizendo no privado</h2>
+    <p class="depo-sub fi">Mensagens reais que recebemos no WhatsApp e nas redes (com autorização).</p>
+  </div>
+
+  <div class="carousel" id="carousel" aria-label="Depoimentos de clientes">
+    <div class="c-track" id="ctrack">
+
+      <!-- ======== CONJUNTO 1 — original ======== -->
+
+      <!-- 1. Carla / Thor (golden retriever) -->
+      <article class="wa" aria-label="Depoimento de Carla sobre Thor">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <!-- SUBSTITUIR: trocar .wa-av pela foto real do contato -->
+          <div class="wa-av" style="background:#E57373">C</div>
+          <div class="wa-ci">
+            <div class="wa-name">Carla 🐕</div>
+            <div class="wa-status">online</div>
+          </div>
+          <div class="wa-ics"><span>&#128222;</span><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub r">
+            Carla, e o Thor? tá melhor depois do método??
+            <div class="t">19:32</div>
+          </div>
+          <div class="bub s">
+            Mana... não acredito 😭 Hoje é o dia 7 e ele ficou com a Vitória (minha sobrinha de 4 anos) sem rosnar nenhuma vez
+            <div class="t">19:45 <span class="chk">✓✓</span></div>
+            <div class="react">❤️</div>
+          </div>
+          <div class="bub s">
+            Ainda tô em choque. Choro toda vez que lembro que quase desisti dele
+            <div class="t">19:46 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">
+            QUE NOTÍCIA BOA!!! Muito feliz por vocês
+            <div class="t">19:48</div>
+            <div class="react">😍</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Mãe / Bento (pitbull) -->
+      <article class="wa" aria-label="Depoimento sobre Bento, pitbull adotado">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#EC407A">M</div>
+          <div class="wa-ci">
+            <div class="wa-name">Mãe ❤️</div>
+            <div class="wa-status">visto por último hoje às 21:10</div>
+          </div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s">
+            Mãe, você não vai acreditar... os meninos vieram aqui hoje e o Bento ficou deitado no tapete a tarde toda. Sem latir, sem avançar, nada.
+            <div class="t">16:08 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">
+            Filha!!! Sério?? Depois de tudo que a gente passou com ele? Você tá me fazendo chorar aqui
+            <div class="t">16:10</div>
+            <div class="react">🥺</div>
+          </div>
+          <div class="bub s">
+            Sério demais. Primeira vez em meses que recebo alguém sem medo. Aquele ebook mudou tudo mãe
+            <div class="t">16:11 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">
+            Graças a Deus! E valeu muito mais do que o adestrador
+            <div class="t">16:14</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Dr. Marcos (vet) — áudio -->
+      <article class="wa" aria-label="Depoimento enviado ao veterinário Dr. Marcos">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#43A047">D</div>
+          <div class="wa-ci">
+            <div class="wa-name">Dr. Marcos (Vet)</div>
+            <div class="wa-status">visto por último hoje às 18:22</div>
+          </div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="grp-lbl">Hoje</div>
+          <!-- Áudio enviado — SUBSTITUIR pela transcrição real se preferir mostrar texto -->
+          <div class="bub s aud-bub">
+            <div class="aud-play"></div>
+            <div class="wvf" id="wf1"></div>
+            <div class="aud-dur">0:38</div>
+            <div class="t">17:05 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">
+            Que ótima notícia! Fico muito feliz. O protocolo que você descreveu é sólido, baseado em dessensibilização clássica. Continue assim.
+            <div class="t">17:28</div>
+            <div class="react">😍</div>
+          </div>
+          <div class="bub s">
+            Muito obrigada, doutor! Imagina se eu tivesse aceitado a sedação... ele está tão diferente.
+            <div class="t">17:31 <span class="chk">✓✓</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Júlia — "salvou meu casamento" -->
+      <article class="wa" aria-label="Depoimento de Júlia sobre o Apolo">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#FB8C00">J</div>
+          <div class="wa-ci">
+            <div class="wa-name">Júlia 🦴</div>
+            <div class="wa-status">online</div>
+          </div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub r">
+            E aí, resolveu a situação com o Apolo?
+            <div class="t">22:03</div>
+          </div>
+          <div class="bub s">
+            Júlia... SALVOU MEU CASAMENTO. Juro por Deus.
+            <div class="t">22:05 <span class="chk">✓✓</span></div>
+            <div class="react">❤️</div>
+          </div>
+          <div class="bub s">
+            Meu marido estava prestes a pedir pra eu escolher entre ele e o Apolo. Dois fins de semana aplicando o método e o cachorro já tá outra coisa com ele.
+            <div class="t">22:06 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">
+            Meu Deus! Que alívio. Onde você achou esse método?
+            <div class="t">22:08</div>
+          </div>
+          <div class="bub s">
+            Te mando o link agora. R$ 47 que mais pesaram na minha vida.
+            <div class="t">22:09 <span class="chk">✓✓</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. Marido — Duke + bebê -->
+      <article class="wa" aria-label="Depoimento sobre Duke deitado ao lado do bebê Miguel">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#1E88E5">R</div>
+          <div class="wa-ci">
+            <div class="wa-name">Marido</div>
+            <div class="wa-status">online</div>
+          </div>
+          <div class="wa-ics"><span>&#128247;</span><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s" style="padding-bottom:18px">
+            <!-- SUBSTITUIR: trocar .vid-ph por <img> com o thumbnail real do vídeo -->
+            <div class="vid-ph">[Vídeo · 0:12]</div>
+            Olha o Duke deitado do lado do Miguel sem fazer nada. Chorei aqui sozinha.
+            <div class="t">14:22 <span class="chk">✓✓</span></div>
+            <div class="react">😍</div>
+          </div>
+          <div class="bub r">
+            Amor... não acredito. Isso é ENORME. Quanto tempo levou?
+            <div class="t">14:35</div>
+          </div>
+          <div class="bub s">
+            12 dias. O método funciona de verdade. Estou em choque boa.
+            <div class="t">14:36 <span class="chk">✓✓</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. Grupo: Apaixonadas por Cães -->
+      <article class="wa" aria-label="Conversa em grupo de amantes de cães">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#7CB342;font-size:7px;letter-spacing:0">APX</div>
+          <div class="wa-ci">
+            <div class="wa-name">Grupo: Apaixonadas por Cães 🐾</div>
+            <div class="wa-status">Amanda, Fernanda, Livia e mais 47</div>
+          </div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="grp-lbl">Amanda</div>
+          <div class="bub r">
+            Meninas, alguém sabe o que fazer com cão agressivo? Minha Mel avançou no meu cunhado hoje e estou desesperada
+            <div class="t">20:14</div>
+          </div>
+          <div class="grp-lbl">Patrícia</div>
+          <div class="bub rg">
+            Amanda, eu passei exatamente por isso com meu Falcão. Me manda seu número no privado, te mando o link do método que usei. Em 14 dias ele tá outro cão.
+            <div class="t">20:18</div>
+            <div class="react">❤️</div>
+          </div>
+          <div class="grp-lbl">Amanda</div>
+          <div class="bub r">
+            Muito obrigada, mandei sim! Que alívio ter vocês aqui
+            <div class="t">20:19</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. Renata — ia entregar na ONG -->
+      <article class="wa" aria-label="Depoimento de Renata que quase entregou o Rex para ONG">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#8E24AA">R</div>
+          <div class="wa-ci">
+            <div class="wa-name">Renata 💛</div>
+            <div class="wa-status">visto por último hoje às 23:01</div>
+          </div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s">
+            Preciso te contar uma coisa. Na semana passada eu já tinha ligado pra ONG pra entregar o Rex.
+            <div class="t">22:44 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">
+            Sério?? E o que aconteceu?
+            <div class="t">22:45</div>
+          </div>
+          <div class="bub s">
+            Vi um anúncio do método, comprei por impulso porque era barato. Era 23h e eu tava desesperada.
+            <div class="t">22:46 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub s">
+            Hoje, dia 10, o Rex dormiu no meu colo. Cancelei a ONG. Não consigo parar de chorar de gratidão.
+            <div class="t">22:47 <span class="chk">✓✓</span></div>
+            <div class="react">🥺</div>
+          </div>
+          <div class="bub r">
+            Que história linda 😭 Fico tão feliz por você e por ele
+            <div class="t">22:49</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8. Pai — Brutus não avançou no carteiro -->
+      <article class="wa" aria-label="Depoimento sobre Brutus que parou de avançar no carteiro">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#546E7A">P</div>
+          <div class="wa-ci">
+            <div class="wa-name">Pai</div>
+            <div class="wa-status">visto por último hoje às 12:30</div>
+          </div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s">
+            Pai, o Brutus não avançou no carteiro hoje. Ficou parado, olhou, voltou pro lugar.
+            <div class="t">11:15 <span class="chk">✓✓</span></div>
+            <div class="react">😍</div>
+          </div>
+          <div class="bub r">
+            Que coisa boa filha! Você fez o método até o fim?
+            <div class="t">11:42</div>
+          </div>
+          <div class="bub s">
+            Fiz sim, 14 dias direitinho. Valeu cada centavo.
+            <div class="t">11:44 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">
+            Orgulho de você. E do Brutus rs
+            <div class="t">11:45</div>
+            <div class="react">❤️</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ======== CONJUNTO 2 — duplicado para loop infinito sem corte ======== -->
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#E57373">C</div>
+          <div class="wa-ci"><div class="wa-name">Carla 🐕</div><div class="wa-status">online</div></div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub r">Carla, e o Thor? tá melhor depois do método??<div class="t">19:32</div></div>
+          <div class="bub s">Mana... não acredito 😭 Hoje é o dia 7 e ele ficou com a Vitória sem rosnar nenhuma vez<div class="t">19:45 <span class="chk">✓✓</span></div><div class="react">❤️</div></div>
+          <div class="bub s">Ainda tô em choque. Choro toda vez que lembro que quase desisti dele<div class="t">19:46 <span class="chk">✓✓</span></div></div>
+          <div class="bub r">QUE NOTÍCIA BOA!!! Muito feliz por vocês<div class="t">19:48</div><div class="react">😍</div></div>
+        </div>
+      </article>
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#EC407A">M</div>
+          <div class="wa-ci"><div class="wa-name">Mãe ❤️</div><div class="wa-status">visto por último hoje às 21:10</div></div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s">Mãe, os meninos vieram aqui hoje e o Bento ficou deitado no tapete a tarde toda. Sem latir, sem avançar, nada.<div class="t">16:08 <span class="chk">✓✓</span></div></div>
+          <div class="bub r">Filha!!! Sério?? Depois de tudo que a gente passou? Você tá me fazendo chorar aqui<div class="t">16:10</div><div class="react">🥺</div></div>
+          <div class="bub s">Primeira vez em meses que recebo alguém sem medo. Aquele ebook mudou tudo mãe<div class="t">16:11 <span class="chk">✓✓</span></div></div>
+          <div class="bub r">Graças a Deus! E valeu muito mais do que o adestrador<div class="t">16:14</div></div>
+        </div>
+      </article>
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#43A047">D</div>
+          <div class="wa-ci"><div class="wa-name">Dr. Marcos (Vet)</div><div class="wa-status">visto por último hoje às 18:22</div></div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s aud-bub">
+            <div class="aud-play"></div>
+            <div class="wvf" id="wf2"></div>
+            <div class="aud-dur">0:38</div>
+            <div class="t">17:05 <span class="chk">✓✓</span></div>
+          </div>
+          <div class="bub r">Que ótima notícia! O protocolo que você descreveu é sólido, baseado em dessensibilização clássica. Continue assim.<div class="t">17:28</div><div class="react">😍</div></div>
+          <div class="bub s">Muito obrigada, doutor! Ele está tão diferente.<div class="t">17:31 <span class="chk">✓✓</span></div></div>
+        </div>
+      </article>
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#FB8C00">J</div>
+          <div class="wa-ci"><div class="wa-name">Júlia 🦴</div><div class="wa-status">online</div></div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub r">E aí, resolveu a situação com o Apolo?<div class="t">22:03</div></div>
+          <div class="bub s">Júlia... SALVOU MEU CASAMENTO. Juro por Deus.<div class="t">22:05 <span class="chk">✓✓</span></div><div class="react">❤️</div></div>
+          <div class="bub s">Meu marido estava prestes a pedir pra eu escolher. Dois fins de semana e o cachorro já tá outra coisa.<div class="t">22:06 <span class="chk">✓✓</span></div></div>
+          <div class="bub r">Que alívio enorme! Onde você achou?<div class="t">22:08</div></div>
+          <div class="bub s">Te mando o link. R$ 47 que mais pesaram na minha vida.<div class="t">22:09 <span class="chk">✓✓</span></div></div>
+        </div>
+      </article>
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#1E88E5">R</div>
+          <div class="wa-ci"><div class="wa-name">Marido</div><div class="wa-status">online</div></div>
+          <div class="wa-ics"><span>&#128247;</span><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s" style="padding-bottom:18px"><div class="vid-ph">[Vídeo · 0:12]</div>Olha o Duke deitado do lado do Miguel sem fazer nada. Chorei aqui sozinha.<div class="t">14:22 <span class="chk">✓✓</span></div><div class="react">😍</div></div>
+          <div class="bub r">Amor... não acredito. Isso é ENORME. Quanto tempo levou?<div class="t">14:35</div></div>
+          <div class="bub s">12 dias. O método funciona de verdade.<div class="t">14:36 <span class="chk">✓✓</span></div></div>
+        </div>
+      </article>
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#7CB342;font-size:7px;letter-spacing:0">APX</div>
+          <div class="wa-ci"><div class="wa-name">Grupo: Apaixonadas por Cães 🐾</div><div class="wa-status">Amanda, Fernanda, Livia e mais 47</div></div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="grp-lbl">Amanda</div>
+          <div class="bub r">Meninas, alguém sabe o que fazer com cão agressivo? Minha Mel avançou no meu cunhado hoje<div class="t">20:14</div></div>
+          <div class="grp-lbl">Patrícia</div>
+          <div class="bub rg">Amanda, eu passei por isso. Me manda seu número no privado, te mando o link. Em 14 dias ele tá outro cão.<div class="t">20:18</div><div class="react">❤️</div></div>
+          <div class="grp-lbl">Amanda</div>
+          <div class="bub r">Muito obrigada, mandei sim!<div class="t">20:19</div></div>
+        </div>
+      </article>
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#8E24AA">R</div>
+          <div class="wa-ci"><div class="wa-name">Renata 💛</div><div class="wa-status">visto por último hoje às 23:01</div></div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s">Na semana passada eu já tinha ligado pra ONG pra entregar o Rex.<div class="t">22:44 <span class="chk">✓✓</span></div></div>
+          <div class="bub r">Sério?? E o que aconteceu?<div class="t">22:45</div></div>
+          <div class="bub s">Vi o anúncio, comprei por impulso. Era 23h e tava desesperada.<div class="t">22:46 <span class="chk">✓✓</span></div></div>
+          <div class="bub s">Hoje, dia 10, o Rex dormiu no meu colo. Cancelei a ONG.<div class="t">22:47 <span class="chk">✓✓</span></div><div class="react">🥺</div></div>
+          <div class="bub r">Que história linda 😭 Fico tão feliz por você e por ele<div class="t">22:49</div></div>
+        </div>
+      </article>
+
+      <article class="wa" aria-hidden="true">
+        <div class="wa-h">
+          <span class="wa-back">&#8592;</span>
+          <div class="wa-av" style="background:#546E7A">P</div>
+          <div class="wa-ci"><div class="wa-name">Pai</div><div class="wa-status">visto por último hoje às 12:30</div></div>
+          <div class="wa-ics"><span>&#8942;</span></div>
+        </div>
+        <div class="wa-b">
+          <div class="bub s">Pai, o Brutus não avançou no carteiro hoje. Ficou parado, olhou, voltou pro lugar.<div class="t">11:15 <span class="chk">✓✓</span></div><div class="react">😍</div></div>
+          <div class="bub r">Que coisa boa filha! Você fez o método até o fim?<div class="t">11:42</div></div>
+          <div class="bub s">Fiz sim, 14 dias direitinho. Valeu cada centavo.<div class="t">11:44 <span class="chk">✓✓</span></div></div>
+          <div class="bub r">Orgulho de você. E do Brutus rs<div class="t">11:45</div><div class="react">❤️</div></div>
+        </div>
+      </article>
+
+    </div><!-- /c-track -->
+  </div><!-- /carousel -->
+
+  <p class="disclaimer">
+    Resultados podem variar conforme aplicação do método. Casos de mordida grave requerem acompanhamento profissional presencial.
+  </p>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 7 — GARANTIA
+================================================ -->
+<section class="s-guarantee">
+  <div class="wrap">
+    <div class="g-box fi">
+      <div class="g-shield">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+
+      <div class="g-days">7 DIAS</div>
+      <h2 class="g-title">Garantia incondicional de 7 dias</h2>
+      <p class="g-text">
+        Compre, acesse o material, comece a aplicar. Se em 7 dias você sentir que não é pra você, devolvemos <strong>100% do valor</strong>. Sem pergunta, sem burocracia. O risco é todo nosso.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 8 — STACK DE VALOR + PREÇO
+================================================ -->
+<section class="s-price">
+  <div class="wrap">
+    <h2 class="s-title center fi">Tudo isso por muito menos do que uma única sessão de adestrador</h2>
+
+    <div class="val-list">
+      <div class="val-item fi d1"><span class="val-name">Ebook completo</span><span class="val-price">R$ 97</span></div>
+      <div class="val-item fi d1"><span class="val-name">12 vídeos com exercícios</span><span class="val-price">R$ 197</span></div>
+      <div class="val-item fi d2"><span class="val-name">Diário de Progresso</span><span class="val-price">R$ 27</span></div>
+      <div class="val-item fi d2"><span class="val-name">Checklist de Segurança</span><span class="val-price">R$ 17</span></div>
+      <div class="val-item fi d3"><span class="val-name">Roteiro com Veterinário</span><span class="val-price">R$ 27</span></div>
+    </div>
+
+    <div class="val-total fi">
+      <span>Valor total do conjunto</span>
+      <strong>R$ 365</strong>
+    </div>
+
+    <div class="price-box fi">
+      <div class="price-was">De R$ 197</div>
+      <div class="price-lbl">Hoje você leva tudo por apenas</div>
+      <div class="price-main"><small>R$</small>47</div>
+      <div class="price-inst">ou 5x de R$ 10,68 sem juros</div>
+
+      <a href="URL_DO_CHECKOUT_AQUI" class="cta" style="max-width:100%" onclick="cta('price')">
+        QUERO ACESSAR AGORA
+      </a>
+
+      <div class="microcopy microcopy-dark">
+        <span>Acesso imediato</span>
+        <span>·</span>
+        <span>Garantia de 7 dias</span>
+        <span>·</span>
+        <span>Pagamento seguro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 9 — FAQ
+================================================ -->
+<section class="s-faq">
+  <div class="wrap">
+    <div class="bar fi"></div>
+    <h2 class="s-title fi">Perguntas frequentes</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item fi d1">
+        <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          Funciona pra qualquer raça e tamanho de cão?
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Sim. O método é baseado em princípios comportamentais que funcionam independente da raça, porte ou idade do cão. De chihuahua a rottweiler — a agressividade tem as mesmas raízes e responde ao mesmo protocolo de dessensibilização.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fi d1">
+        <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          Em quanto tempo eu começo a ver resultado?
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Muitos pais de pet relatam mudanças já nas primeiras 48h com o Protocolo de Segurança Imediato. O comportamento mais profundo se transforma ao longo dos 14 dias. Cada cão tem seu ritmo, mas o método é progressivo e você verá evolução consistente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fi d2">
+        <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          Preciso ter experiência com adestramento?
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Não. O método foi desenvolvido para ser aplicado por qualquer pai ou mãe de pet, sem conhecimento técnico prévio. Cada passo é explicado em linguagem simples, e os vídeos mostram exatamente o que fazer.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fi d2">
+        <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          E se meu cão for adotado e tiver trauma?
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>O método contempla especificamente cães adotados e com histórico de maus-tratos. O pilar do Diagnóstico ajuda a identificar se a agressividade vem de trauma, medo ou falta de estrutura — e o protocolo de reabilitação se adapta a cada caso.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fi d3">
+        <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          Funciona pra cães idosos?
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Sim, embora o ritmo possa ser mais lento. O método inclui adaptações para cães com mobilidade reduzida e orienta sobre quando encaminhar para avaliação veterinária de causas físicas (dor crônica, hipotireoidismo) que podem intensificar a agressividade.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fi d3">
+        <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          Como recebo o material?
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Imediatamente após a confirmação do pagamento, você recebe um e-mail com o link de acesso à área de membros. Funciona em qualquer celular, tablet ou computador. Acesso vitalício, sem prazo de expiração.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fi d4">
+        <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          Posso pedir reembolso?
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>Sim. Você tem 7 dias a partir da compra para solicitar reembolso integral, sem precisar justificar. Basta enviar um e-mail e o valor é devolvido em até 5 dias úteis. Sem burocracia, sem perguntas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     SEÇÃO 10 — PS FINAL
+================================================ -->
+<section class="s-ps">
+  <div class="wrap">
+    <div class="ps-card fi">
+      <div class="ps-label">Uma última coisa</div>
+      <p class="ps-text">
+        "Cada dia que passa sem ação é um dia a mais de risco. Não espere a próxima mordida pra agir. Seu cachorro confia em você — e você pode confiar nesse método. Comece hoje, com 7 dias de garantia. Se não for pra você, devolvemos tudo. Se for, você recupera o cão que sempre soube que ele poderia ser."
+      </p>
+
+      <a href="URL_DO_CHECKOUT_AQUI" class="cta" onclick="cta('ps-final')">
+        QUERO REABILITAR MEU CÃO AGORA
+      </a>
+
+      <div class="microcopy" style="margin-top:12px">
+        <span>Acesso imediato</span>
+        <span>·</span>
+        <span>Garantia de 7 dias</span>
+        <span>·</span>
+        <span>R$ 47 à vista</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     RODAPÉ
+================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-cnpj">
+        <!-- SUBSTITUIR: inserir razão social e CNPJ reais aqui -->
+        [Razão Social Ltda.] &nbsp;·&nbsp; CNPJ: XX.XXX.XXX/0001-XX<br>
+        <!-- SUBSTITUIR: e-mail real de suporte -->
+        contato@caomaiskalmo.com.br
+      </div>
+      <div class="foot-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Contato</a>
+      </div>
+    </div>
+    <p class="foot-disc">
+      Este material tem caráter educativo e não substitui acompanhamento profissional de médico veterinário ou comportamentalista canino em casos graves.
+    </p>
+  </div>
+</footer>
+
+
+<script>
+  /* ================================================
+     INTERSECTION OBSERVER — FADE IN
+  ================================================ */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+  /* ================================================
+     STICKY CTA — aparece após 30% de scroll
+  ================================================ */
+  const stickyEl = document.getElementById('sticky');
+  let shown = false;
+
+  window.addEventListener('scroll', () => {
+    if (shown) return;
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    if (pct >= 30) { stickyEl.classList.add('on'); shown = true; }
+  }, { passive: true });
+
+  /* ================================================
+     FAQ ACCORDION
+  ================================================ */
+  function faq(btn) {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.setAttribute('aria-expanded', 'false');
+      const a = q.nextElementSibling;
+      if (a) a.classList.remove('open');
+    });
+
+    if (!open) {
+      btn.setAttribute('aria-expanded', 'true');
+      const ans = btn.nextElementSibling;
+      if (ans) ans.classList.add('open');
+    }
+  }
+
+  /* ================================================
+     WAVEFORMS WHATSAPP
+  ================================================ */
+  const WV_HEIGHTS = [4,6,10,14,18,14,10,8,12,16,18,12,8,6,10,14,16,10,8,12,14,10,8,6,10,12,8,5];
+
+  function buildWaveform(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    WV_HEIGHTS.forEach(h => {
+      const bar = document.createElement('span');
+      bar.style.height = h + 'px';
+      el.appendChild(bar);
+    });
+  }
+
+  buildWaveform('wf1');
+  buildWaveform('wf2');
+
+  /* ================================================
+     CARROSSEL — SUPORTE A TOUCH / SWIPE
+  ================================================ */
+  const track = document.getElementById('ctrack');
+  let tx0 = 0, resumeTimer;
+
+  if (track) {
+    track.addEventListener('touchstart', e => {
+      tx0 = e.touches[0].clientX;
+      track.style.animationPlayState = 'paused';
+      clearTimeout(resumeTimer);
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+      resumeTimer = setTimeout(() => { track.style.animationPlayState = 'running'; }, 1800);
+    }, { passive: true });
+  }
+
+  /* ================================================
+     TRACKING PLACEHOLDER
+     SUBSTITUIR: implementar eventos reais de pixel aqui
+  ================================================ */
+  function cta(loc) {
+    // Meta Pixel: fbq('track', 'InitiateCheckout', { content_name: loc });
+    // GA4:        gtag('event', 'cta_click', { location: loc });
+    console.log('[CTA]', loc);
+  }
+
+  /* ================================================
+     PADDING BODY PARA STICKY CTA NÃO COBRIR CONTEÚDO
+  ================================================ */
+  if (window.innerWidth < 768) document.body.style.paddingBottom = '84px';
+</script>
+
+</body>
+</html>
